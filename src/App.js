@@ -9,6 +9,7 @@ import Employees from './Pages/Employees'
 
 import Sidebar from './components/Sidebar';
 import EditEmployee from './Pages/EditEmployee';
+import Error from './Pages/Error';
 import EmployeePage from './Pages/EmployeePage';
 import Adminorg from './Pages/Adminorg';
 function App() {
@@ -28,8 +29,8 @@ function App() {
             <Route path='/employees/:id' element={<EditEmployee/>}/>
             <Route path='/employeePage' element={<EmployeePage/>}/>
             <Route path='/admin' element={<Adminorg/>}/>
-          
-          
+            <Route path='/error' element={<Error/>}/>
+            <Route path="*" element={<Error/>} />
       
         
           </Routes>
