@@ -12,6 +12,7 @@ import EditEmployee from './Pages/EditEmployee';
 import Error from './Pages/Error';
 import EmployeePage from './Pages/EmployeePage';
 import Adminorg from './Pages/Adminorg';
+import Salaryslip from './components/Salaryslip';
 function App() {
   return (
     <div className="App">
@@ -31,7 +32,7 @@ function App() {
             <Route path='/admin' element={<Adminorg/>}/>
             <Route path='/error' element={<Error/>}/>
             <Route path="*" element={<Error/>} />
-      
+            <Route path="salary" element={<Salaryslip/>} />
         
           </Routes>
       </div>
