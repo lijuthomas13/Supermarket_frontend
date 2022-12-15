@@ -1,0 +1,151 @@
+@import "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css";
+@import "react-calendar/dist/Calendar.css";
+
+
+
+.box {
+  
+  
+    width:100%;
+    height: 100%;
+    padding: 50px 50px 50px 50px;
+    
+   
+  
+  }
+        
+
+.addemployee{
+    width:100%;
+    background-color:#fff;
+    border-radius: 10px;
+    height:150px;
+    margin-bottom:50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+   
+
+}
+.filter{
+    width:100%;
+    background-color:#fff;
+    border-radius: 10px;
+    height:80px;
+    margin-bottom:50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    
+   
+    
+
+}
+.employeedata{
+    width:100%;
+    border-radius: 10px;
+    height:200px;
+    background-color:#fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    
+   
+   
+
+
+}
+.one{
+    width:150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:#010322
+    
+    
+}
+
+.two{
+   
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    align-self: center;
+    justify-self: center;
+    margin-right: 20px;
+    cursor: pointer;
+    
+   
+    
+}
+.two p{
+    border: 1px solid #8991c0;
+    padding: 10px;
+}
+#search{
+    width:250px;
+    height:35px;
+    border: 1px solid #8991c0;
+    border-radius: 10px;
+    padding-left: 5px;
+
+
+   
+}
+input::placeholder{
+    color:#8991c0
+}
+.filter input:focus{
+    outline: none;
+    
+}
+.filter select{
+    width:200px;
+    height:35px;
+    border: 1px solid #8991c0;
+    border-radius: 10px;
+    padding: 5px;
+
+
+}
+.filter select{
+    color:#9EA5CB;
+}
+.filter select:focus{
+    outline: none;
+
+}
+.option{
+    color: black;
+}
+select option:hover {
+    margin: 40px;
+  
+    background-color: aqua;
+  
+  }
+  #date{
+    border: 1px solid #8991c0;
+    border-radius: 10px;
+
+  }
+  .react-daterange-picker__wrapper{
+    width:300px;
+    height:35px;
+    border: 1px solid #8991c0;
+    border-radius: 10px;
+
+  }
+  
+  .react-daterange-picker__inputGroup__input{
+    color:#8991c0;
+  }
+  .react-daterange-picker__inputGroup__input span{
+    color:#8991c0
+  }
+.react-daterange-picker__inputGroup__divider span{
+    color:#8991c0
+
+}
