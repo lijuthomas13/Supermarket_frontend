@@ -1,0 +1,91 @@
+#parent{
+    display: flex;
+    flex-direction: row;
+    height: 1250px;
+}
+#left{
+    flex: 20%;
+    position:fixed;
+    height: 100vh;
+    
+}
+#right{
+    flex: 80%;
+    background-color: #E5EAFF;
+    height: 100%;
+    margin-left: 19%;
+}
+
+#outer-div-parent{
+    width: 300px;
+    background-color: #010322;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#child-user-details{
+    flex: 30%;
+}
+#child-navigation{
+    flex: 70%;
+}
+#user-info{
+    position: absolute;
+    top: 10%;
+    left: 10px;
+    height: 80px;
+    width: 270px;
+    border: 1px solid white;
+    border-radius: 37px;
+    display: flex;
+    flex-direction: row;
+}
+#user-img{
+    flex: 30%;
+}
+#user-details{
+    flex: 70%;
+    color: white;
+    text-align: left;
+    padding-left: 5px;
+    padding-top: 10px;
+}
+#img{
+    height: 55px;
+    width: 55px;
+    margin-left: 8px;
+    font-size: 30px;
+    color:  #010322;
+    position: relative;
+    top: 12px;
+}
+P{
+    font-size: small;
+}
+h4{
+    color: yellow;
+}
+.dash_icon{
+    display: flex;
+    flex-direction: row;
+    
+    padding: 5px;
+    gap: 10px;
+    font-size: larger;
+    padding-left: 40px;
+    cursor: pointer;
+}
+
+.active{
+    color: yellow;
+    font-family: 'Inter';
+    
+}
+.map_but{
+    color: white;
+    font-family: 'Inter';
+    
+}
+#span_icon{
+    padding-right: 10px;
+}

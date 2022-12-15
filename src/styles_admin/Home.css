@@ -1,0 +1,46 @@
+#Registration {
+  width: 50%;
+  margin-top: 100px;
+}
+
+#pass_label,
+#email_label {
+  width: 100%;
+  text-align: left;
+  font-family: "Signika", sans-serif;
+}
+
+#res_but,
+#sub_but {
+  width: 100%;
+}
+
+#parent {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+#child1 {
+  flex: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+#child2 {
+  flex: 50%;
+}
+
+#img_tag {
+  width: 100%;
+}
+
+.error_msg {
+  color: red;
+  font-family: "Signika", sans-serif;
+  font-size: smaller;
+}
+
+#Registration {
+  padding: 10px;
+}/*# sourceMappingURL=Home.css.map */

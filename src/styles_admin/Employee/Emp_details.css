@@ -1,0 +1,15 @@
+#emp_parent{
+    display: flex;
+    flex-direction: row;
+}
+#emp_leftchild{
+    flex: 50%;
+    text-align: left;
+    height: 100px;
+    font-family: 'inter';
+}
+#emp_rightchild{
+    flex: 50%;
+    align-items: right;
+    height: 100px;
+}
