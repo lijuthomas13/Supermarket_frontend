@@ -1,0 +1,64 @@
+.head1{
+    height: 100px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    color:#616785 ;
+    font-family: "Poppins";
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.icon2{
+    height: 100px;
+}
+.emp_details{
+    margin-left: 20px;
+    margin-top: 50px;
+    color: #787BA8;
+    font-family: "Poppins";
+    width: 150px;
+    float: left;
+}
+p{
+    margin-bottom: 10px;
+}
+.head2{
+    color:#616785 ;
+    font-family: "Poppins";
+    text-align: center;
+    margin-top: 10px;
+}
+.details{
+    color:#616785 ;
+    font-family: "Poppins";
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 150px;
+    float: left;
+}
+.show_details{
+    margin-left: 200px;
+    width: 200px;
+    /* margin-top: 50px; */
+    color: #787BA8;
+    font-family: "Poppins";
+    margin-top: 50px;
+    
+}
+.show_Otherdetails{
+    margin-top: 20px;
+    margin-left: 250px;
+    color: #787BA8;
+    font-family: "Poppins";
+}
+.payslip-btn{
+    background-color: #010322 ;
+    font-family: "Poppins";
+    color:#E5EAFF ;
+    border-radius: 8px;
+    width: 120px;
+}
+.download-payslip{
+    margin-left: 50px;
+}

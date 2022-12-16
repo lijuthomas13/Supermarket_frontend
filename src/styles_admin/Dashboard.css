@@ -1,0 +1,37 @@
+.card_id{
+    position: absolute;
+width: 270px;
+height: 219px;
+
+border-radius: 15px;
+background-color: white;
+}
+
+.card_id:hover{
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+
+}
+
+#row1-card3,
+#row1-card2,
+#row1-card1{
+    
+    margin-left: 20px;
+    width: 270px;
+height: 169px;
+
+box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+#row2-card1,
+#row2-card2{
+    width: 535px;
+height: 270px;
+margin: 30px;
+box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+
+}
+h3{
+    font-family: 'Inter';
+    text-align: left;
+    padding-left: 30px;
+}

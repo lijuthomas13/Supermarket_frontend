@@ -1,0 +1,29 @@
+#sidebar {
+  height: 100vh;
+  width: 200px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  justify-content: start;
+}
+
+#name {
+  height: 80px;
+  width: 180px;
+  border: 2px solid #3E7BFA;
+  border-radius: 5px;
+}
+
+.icons {
+  color: white;
+  text-decoration: none;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.icons:hover {
+  color: #3E7BFA;
+}/*# sourceMappingURL=Navbar.css.map */

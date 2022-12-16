@@ -1,0 +1,20 @@
+#parent{
+    display: flex;
+    flex-direction: row;
+    
+}
+#child1{
+   
+    flex: 50%;
+    align-items: center;
+    justify-content: center;
+    
+}
+#child2{
+    flex:50%;
+    
+}
+#img_tag{
+    width: 100%;
+    
+}

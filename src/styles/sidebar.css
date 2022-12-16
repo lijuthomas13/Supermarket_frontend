@@ -1,0 +1,108 @@
+.Sidebar{
+  
+  height: 100%; 
+  width:  20%; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color:#010322; 
+  overflow-x: hidden; 
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+
+
+}
+/* h1{
+    color:white
+} */
+
+.users{
+    align-self: center;
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    border:#B4BCE5 1px solid;
+    border-radius: 25px;
+    height: 80px;
+    width:270px;
+    margin-bottom: 70px;
+    
+}
+.details{
+    text-align: center;
+}
+.details h3{
+    color:#B4BCE5;
+    margin:6px 5px;
+
+
+}
+.details p{
+ 
+    color:#B4BCE5
+   
+
+
+}
+
+.dashboard{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-basis: 80px;
+    color:#E5EAFF;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    
+    
+}
+
+.payroll{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-basis: 80px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+.employees{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-basis: 80px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+
+}
+.logout{
+   
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-basis: 80px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+
+   
+    
+}
+
+.link{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color:#E5EAFF;
+    
+   
+   
+}
+.link:active{
+    color:aqua
+    
+}
+span{
+    margin-right: 10px;
+}

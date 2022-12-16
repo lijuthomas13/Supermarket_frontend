@@ -1,0 +1,80 @@
+@import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
+@import 'react-calendar/dist/Calendar.css';
+
+.card{
+    
+    margin-left: 45px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+#emp-row-1{
+    height: 100px;
+}
+#emp-row-2{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+}
+#emp-row-2,
+#emp-row-3{
+    
+    padding-left: 0%;
+    padding-right: 0%;
+}
+#emp-row-2{
+  width: 1150px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 9px;
+    gap: 10px;
+    height: 630px;
+    margin-left: 48px;
+}
+#emp-row-3{
+  width: 1000px;
+  margin-top: 30px;
+  
+  height: 500px;
+}
+#emp-row-1{
+    width: 1150px;
+}
+
+#customers {
+    font-family: 'Poppins';
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 50px;
+  }
+  
+  #customers td, #customers th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    width: 950px;
+  }
+  
+  #customers tr:nth-child(even){background-color: white;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #E5EAFF;
+    color: black;
+  }
+  #calendar{
+    border: none;
+  }
+
+  .react-daterange-picker__wrapper{
+    border: solid 2px #e7e8e8;
+    border-radius: 10px;
+    height: 38px;
+  }
+
+  input:focus{
+    border: none;
+    outline: none;
+  }
