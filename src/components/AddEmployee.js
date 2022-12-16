@@ -1,17 +1,42 @@
 import React from 'react'
 import '../styles/AddEmployee.css'
 import icons from '../Assets/icons.svg'
-
+import Avatar from '@mui/material/Avatar';
+import {useState} from 'react';
+import {storage} from './firebase';
+import 'firebase/storage';
+import {ref, uploadBytes,getDownloadURL} from 'firebase/storage';
 
 import {  useFormik } from 'formik'
 import * as Yup from "yup";
 import { FaFileUpload } from 'react-icons/fa'
 import axios from 'axios';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import Button from '@mui/material/Button';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+
+
 
 function AddEmployee({setShow , data , setData}) {
     console.log(data.length)
     
+    const [imageUpload, setImageUpload] = useState(null)
+    const [downurl, seturl] = useState(null)
 
+    
+    const uploadimage=()=>{ 
+        if (imageUpload == null) return;
+        
+        
+        //uploadBytes(imageref, imageUpload).then(() => alert('image uploaded'))
+        const storageRef = ref(storage, `images/${imageUpload.name}`);
+        uploadBytes(storageRef, imageUpload).then((snapshot) => {
+          alert('image uploaded')
+          console.log('uploaded');
+          getDownloadURL(snapshot.ref).then(url => seturl(url));
+        });
+    
+      }
    
    
     
@@ -27,9 +52,9 @@ function AddEmployee({setShow , data , setData}) {
             Department: "",
             AadharNumber: "",
             AadharDocument: "",
-            UserType:''
+            UserType:'',
             // created_at:""
-            // profilePhoto:null
+            profilePhoto:null
         },
         validationSchema: Yup.object({
             FirstName: Yup.string().max(15, "must be 15 characters or less").required("Required"),
@@ -43,8 +68,9 @@ function AddEmployee({setShow , data , setData}) {
             // .test("FILE_TYPE","Invalid format",(value)=>value && ['image/jpeg','image/png'].includes(value.type))
         }),
         onSubmit: (values) => {
-
-            const payload={firstName:values.FirstName
+            console.log(downurl)
+            
+             const payload={firstName:values.FirstName
                         ,lastName:values.LastName,
                         address:values.Address,
                         aadharNumber:values.AadharNumber,
@@ -53,11 +79,12 @@ function AddEmployee({setShow , data , setData}) {
                         designation:values.Designation,
                         phoneNumber:values.PhoneNumber,
                         email:values.Email,
-                        UserType:parseInt(values.UserType),ProfilePic:"https://firebasestorage.googleapis.com/v0/b/imageupload-d3293.appspot.com/o/images%2FMicrosoftTeams-image.png?alt=media&token=641acf09-ee78-4cca-a539-8bcd96ae0698"
+                        UserType:parseInt(values.UserType),
+                        profilePic:downurl
                         
             }
           
-            console.log(values)
+            console.log(payload)
             axios.post(add_url, payload).then(res => console.log("posted", res.status)).catch(err => console.log(err.response?.status))
             setShow(false)
             setData(data.length !== 0 ? [...data, payload] : data);
@@ -81,13 +108,17 @@ function AddEmployee({setShow , data , setData}) {
 
 
                     <div className='profile_pic'>
-                     <div ><img src={icons} style={{ width: "80px" }} /></div>
+                     <div >
+                     {downurl?<Avatar alt="Travis Howard" src={downurl} />:<img src={icons} style={{ width: "80px" }} />}
+                     </div>
                      <div ><h5>Profile</h5></div>
                      <div className='upload_option'>
-                        <input type="file" name="file" id="file" class="myclass1" onChange={formik.handleChange} value={formik.values.file} onBlur={formik.handleBlur}></input>
-                        {formik.errors.file ? <p className='error'>{formik.errors.file}</p> : null}
-                        <label for="file"><FaFileUpload />Upload Photo</label>
+                        <input type="file" name="file" id="file" class="myclass1" onChange={(event)=>{setImageUpload(event.target.files[0])}} value={formik.values.file} onBlur={formik.handleBlur}></input>
+                        
+                        <label for="file"><AttachFileIcon />Select Photo</label>
+                        
                     </div>
+                    {imageUpload?<Button style={{width:'220px'}} variant="contained" onClick={uploadimage}>Upload <UploadFileIcon/></Button>:null}
 
                        
                     </div>
