@@ -3,7 +3,7 @@ import icon from '../Assets/icons.svg'
 import '../styles/component.css';
 import { useState,useEffect } from 'react';
 import axios  from 'axios';
-
+import Avatar from '@mui/material/Avatar';
 function EmployeeDetails(props) {
   console.log(props)
   const emp_url=`http://192.168.2.74/employee/${props.id}`
@@ -19,7 +19,8 @@ function EmployeeDetails(props) {
     <div className='emp_container'>
       <div className='head1'>Employee Details
           <div className='icon2'>
-            <img style={{width:"100px"}} src={icon} />
+            {/* <img style={{width:"100px"}} src={icon} /> */}
+            <Avatar style={{width:'100px',height:'100px'}} alt="Travis Howard" src={employee.profilePic} />
           </div>
       </div>
       <div className='emp_details'>
