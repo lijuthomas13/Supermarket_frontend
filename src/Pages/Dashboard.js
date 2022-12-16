@@ -11,6 +11,8 @@ import axios from 'axios'
 import Chart1 from '../components/Chartone';
 import Chart2 from '../components/ChartTwo';
 import Sidebar from '../components/Sidebar';
+import EmployeeRoles from '../components_admin/Dash-comp/EmployeeRoles';
+import WorkingFormat from '../components_admin/Dash-comp/WorkingFormat';
 
 
 
@@ -19,7 +21,7 @@ import Sidebar from '../components/Sidebar';
 
 
 const Dashboard = () => {
-  const [data,setData]=useState(null)
+  const [data,setData]=useState([])
 
 
   const url="http://192.168.2.74/employee/all";
@@ -41,6 +43,21 @@ const Dashboard = () => {
     
   }, [data])
 
+  const count=data.filter(obj=>{
+    if(obj.isVerified){
+        return true;
+    }
+    return false;
+    
+}).length;
+
+const count_uv=data.filter(obj=>{
+  if(obj.isVerified){
+      return false;
+  }
+  return true;
+  
+}).length;
   
 
   
@@ -63,8 +80,8 @@ const Dashboard = () => {
     <div className='summary-data'>
     <img src={Add}  alt="add"></img>
     <div>
-        <h3>2500</h3>
-        <p>New Employees</p>
+        <h3>{count}</h3>
+        <p>VerifiedEmployees</p>
     </div>
 
     
@@ -73,8 +90,8 @@ const Dashboard = () => {
     <div className='summary-data'>
     <img src={resigned}  alt="resigned"></img>
     <div>
-        <h3>2500</h3>
-        <p>Resigned Employees</p>
+        <h3>{count_uv}</h3>
+        <p>Not Verified Employees</p>
     </div>
      
     </div>
@@ -82,8 +99,8 @@ const Dashboard = () => {
   <div className='chart'>
     <div className='datachart'>
       <h5>Employee Roles</h5>
-      <Chart1/>
-     
+      {/* <Chart1/> */}
+     <EmployeeRoles/>
       <div className="details-one">
                 <div>
                 <p><span><img src={circle}></img></span>role 1</p>
@@ -102,7 +119,8 @@ const Dashboard = () => {
     </div>
     <div className='datachart'>
       <h5>Department</h5>
-      <Chart2/>
+      {/* <Chart2/> */}
+      <WorkingFormat/>
     </div>
   </div>
 </div>

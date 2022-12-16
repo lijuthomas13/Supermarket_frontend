@@ -37,6 +37,26 @@ function AddEmployee({setShow , data , setData}) {
         });
     
       }
+
+      const [Aadharupload, setAadharUpload] = useState(null)
+      const [AadharUrl, setAadharUrl] = useState(null)
+  
+      
+      const uploadAadhar=()=>{ 
+        
+          if (Aadharupload == null) return;
+          
+          
+          //uploadBytes(imageref, imageUpload).then(() => alert('image uploaded'))
+          const storageRef = ref(storage, `images/${Aadharupload.name}`);
+          uploadBytes(storageRef, Aadharupload).then((snapshot) => {
+            alert('Aadhar uploaded')
+            console.log('AADHAR uploaded');
+            getDownloadURL(snapshot.ref).then(url => setAadharUrl(url));
+            
+          });
+      
+        }
    
    
     
@@ -51,7 +71,7 @@ function AddEmployee({setShow , data , setData}) {
             Designation: "",
             Department: "",
             AadharNumber: "",
-            AadharDocument: "",
+            AadharDocument: null,
             UserType:'',
             // created_at:""
             profilePhoto:null
@@ -74,7 +94,7 @@ function AddEmployee({setShow , data , setData}) {
                         ,lastName:values.LastName,
                         address:values.Address,
                         aadharNumber:values.AadharNumber,
-                        aadharDocument:values.AadharDocument,
+                        aadharDocument:AadharUrl,
                         department:values.Department,
                         designation:values.Designation,
                         phoneNumber:values.PhoneNumber,
@@ -161,18 +181,25 @@ function AddEmployee({setShow , data , setData}) {
                                 </div>
                             </div> */}
                            
-                                <div class="form-outline">
+                                {/* <div class="form-outline">
                                     <input type="text" id="AadharDocument" class="form" placeholder='Aadhar Document' onChange={formik.handleChange} value={formik.values.AadharDocument} onBlur={formik.handleBlur} />
                                     {formik.touched.AadharDocument && formik.errors.AadharDocument ? <p className='error'>{formik.errors.AadharDocument}</p> : null}
-                                </div>
+                                </div> */}
                            
+                                <div>
+                                    <input type='file' onChange={(event)=>{setAadharUpload(event.target.files[0])}}></input>
+                                    {/* <Button variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button> */}
+                                    {Aadharupload?<Button variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button>:null}
+                                </div>
+                            
+                                
            
                                 <div class="form-outline">
                                     <input type="text" id="Designation" class="form" placeholder='Designation' onChange={formik.handleChange} value={formik.values.Designation} onBlur={formik.handleBlur} />
                                     {formik.touched.Designation && formik.errors.Designation ? <p className='error'>{formik.errors.Designation}</p> : null}
                                 </div>
                           
-
+                                
 
                        
                        

@@ -45,7 +45,7 @@ function EmployeeRoles(props) {
     return entry.name + entry.value/100;
   }
   return (
-    <PieChart width={1000} height={400}>
+    <PieChart width={500} height={280}>
     <Pie
       data={data}
       cx={250}

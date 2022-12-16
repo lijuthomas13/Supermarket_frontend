@@ -117,7 +117,9 @@ function Payroll() {
 function Row(props) {
   const { row } = props
   const [open, setOpen] =useState(false);
+  const [aadharOpen, setaadharOpen] =useState(false);
   const [searched, setSearched] = useState("");
+  console.log(aadharOpen)
   useEffect(()=>{
     if(currentId===row.id){
       setOpen(true)}
@@ -202,9 +204,10 @@ function Row(props) {
                     <TableRow >
                       
                       <TableCell component="th" scope="row"> <Button id='123' onClick={()=>{Verify(row.id); setCurrentId(row.id);}} style={row.isVerified ? { width: '130px', backgroundColor: 'red' } : { width: '130px', backgroundColor: 'green' }} variant="contained">{row.isVerified ? 'Unverify' : 'Verify'} {row.isVerified ? <CloseIcon /> : <DoneIcon />} </Button></TableCell>
-                      <TableCell component="th" scope="row"> <Button variant="contained">View Aadhar <ArrowForwardIosIcon style={{fontSize: '15px'}} /></Button></TableCell>
+                      <TableCell component="th" scope="row"> <Button variant="contained" onClick={() => { setaadharOpen(!aadharOpen) }}>View Aadhar <ArrowForwardIosIcon style={{fontSize: '15px'}} /></Button></TableCell>
                       <TableCell component="th" scope="row"> <Button onClick={()=>{DeleteEmp(row.id)}}  variant="contained" style={{backgroundColor:'red'}}>Delete <DeleteIcon style={{fontSize: '23px'}} /></Button></TableCell>
                     </TableRow>
+                    {aadharOpen?<TableRow><img src={row.aadharDocument} style={{height:'300px',width:'570px'}}/></TableRow>:null}
                   </TableBody>
                   <TableFooter>
                     <TableRow>
