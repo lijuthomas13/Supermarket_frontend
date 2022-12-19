@@ -19,7 +19,7 @@ const EachEmployee = (props) => {
           <div className='imagee'>
             <div>{props.verification?<GoVerified style={{color:"green"}}/>:<GoUnverified style={{color:"red"}}/>}</div>
             <div><img src={icon}></img></div>
-            <div><LongMenu  eachemployee={props.eachemployee} data={props.data} setData={props.setData}/></div>
+            <div><LongMenu  eachemployee={props.eachemployee} data={props.data} setData={props.setData} setEdit={props.setEdit} setId={props.setId}/></div>
           </div>
          
        

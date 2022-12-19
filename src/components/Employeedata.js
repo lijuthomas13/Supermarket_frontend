@@ -2,7 +2,7 @@ import React from 'react';
 
 import EachEmployee from './EachEmployee'
 
-const Employeedata = ({ data ,setData ,searchItem,option}) => {
+const Employeedata = ({ data ,setData ,searchItem,option,setEdit,setId}) => {
   
   return (
     <>
@@ -36,7 +36,7 @@ else if(item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&
 }
 
 
-}).map((employee,index) => (<EachEmployee  key={index} firstname={employee?.firstName} lastName={employee?.lastName} designation={employee?.designation} email={employee?.email} phoneNumber={employee?.phoneNumber} department={employee?.department} verification={employee.isVerified} eachemployee={employee} id={employee.id} data={data} setData={setData}/>))}
+}).map((employee,index) => (<EachEmployee  key={index} firstname={employee?.firstName} lastName={employee?.lastName} designation={employee?.designation} email={employee?.email} phoneNumber={employee?.phoneNumber} department={employee?.department} verification={employee.isVerified} eachemployee={employee} id={employee.id} data={data} setData={setData} setEdit={setEdit} setId={setId}/>))}
 
     </ul>
 

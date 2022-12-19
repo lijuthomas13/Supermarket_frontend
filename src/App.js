@@ -8,7 +8,7 @@ import Payroll from './Pages/Payroll';
 import Employees from './Pages/Employees'
 
 import Sidebar from './components/Sidebar';
-import EditEmployee from './Pages/EditEmployee';
+import EditEmployee from './components/EditEmployee';
 import EmployeePage from './Pages/EmployeePage';
 import Adminorg from './Pages/Adminorg';
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route path='/dashboard/:id' element={<Dashboard/>}/>
             <Route path='/employees/:id' element={<Employees/>}/>
             <Route path='/payroll/:id' element={<Payroll/>}/>
-            <Route path='/editEmployee/:id' element={<EditEmployee/>}/>
+            {/* <Route path='/editEmployee/:id' element={<EditEmployee/>}/> */}
             <Route path='/employeePage/:id' element={<EmployeePage/>}/>
             <Route path='/admin/:id' element={<Adminorg/>}/>
           

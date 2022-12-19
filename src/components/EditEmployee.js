@@ -8,25 +8,37 @@ import * as Yup from "yup";
 import { FaFileUpload } from 'react-icons/fa'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
+import Sidebar from './Sidebar';
 
 
-function EditEmployee() {
-    let navigate=useNavigate()
+function EditEmployee({id, setEdit}) {
     
-  
-    let {id} = useParams()
+    
+  let navigate=useNavigate()
+   
   
     const url="http://192.168.2.74/employee/all";
     const edit_url = `http://192.168.2.74/employee/edit/${id}`;
 
 
-    function HandleEdit( payload){
-        // axios.put(edit_url, payload).then(res =>{navigate('/employees'),console.log("posted", res.status)}).catch(err => console.log(err.response?.status))
-        axios.put(`http://192.168.2.74/employee/edit/${id}`,payload).then(res =>{navigate('/employees')})
-    }
+    // function HandleEdit( payload){
+    //     axios.put(`http://192.168.2.74/employee/edit/${id}`,payload).then(res =>{navigate('/employees')})
+          
+           
+            
+            
+            
+    //       }
+    //     axios.put(`http://192.168.2.74/employee/edit/${id}`,payload).then(res =>{navigate('/employees')})
+    // }
     
-    
+    const getData=async(payload)=>{
+
+       await axios.put(edit_url,payload).then(res =>{navigate('/employees')})
+       
+      }
+  
+      
     const formik = useFormik({
         initialValues: {
             FirstName: "",
@@ -62,13 +74,14 @@ function EditEmployee() {
                 designation:values.Designation,
                 phoneNumber:values.PhoneNumber,
                 email:values.Email,
-                UserType:parseInt(values.UserType),}
-           
+                UserType:parseInt(values.UserType),ProfilePic:"https://firebasestorage.googleapis.com/v0/b/imageupload-d3293.appspot.com/o/images%2FMicrosoftTeams-image.png?alt=media&token=641acf09-ee78-4cca-a539-8bcd96ae0698"
+                
+    }
            
          
             console.log(values)
             // axios.put(edit_url, payload).then(res =>{navigate('/employees'),console.log("posted", res.status)}).catch(err => console.log(err.response?.status))
-            HandleEdit(payload)
+            getData(payload)
         
         }
 
@@ -204,7 +217,7 @@ function EditEmployee() {
                        
                                 <div class="button_div">
                                     <button class="save" type="submit">Save</button>
-                                    <button class="cancel" type="button" >Cancel</button>
+                                    <button class="cancel" type="button" onClick={()=>setEdit(false)}>Cancel</button>
                                 </div>
                     </div>
                 </form>

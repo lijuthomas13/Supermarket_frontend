@@ -16,11 +16,13 @@ export default function LongMenu(props) {
  
  
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const navigate = useNavigate()
+  
   const open = Boolean(anchorEl);
   const HandleEdit=(id)=>{
     console.log(id,"etert")
-    navigate(`/editEmployee/${id}`)
+    props.setId(id)
+    props.setEdit(true)
+   
 
   }
  
