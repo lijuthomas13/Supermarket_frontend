@@ -117,7 +117,9 @@ function Payroll() {
 function Row(props) {
   const { row } = props
   const [open, setOpen] =useState(false);
+  const [aadharOpen, setaadharOpen] =useState(false);
   const [searched, setSearched] = useState("");
+  console.log(aadharOpen)
   useEffect(()=>{
     if(currentId===row.id){
       setOpen(true)}
@@ -142,6 +144,23 @@ function Row(props) {
     
   }
 
+  function searching(item){
+    if (searchItem === '' && option === 0) {
+      return item;
+    }
+    else if (
+      item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option==0) {
+      return item;
+    }
+    else if(searchItem === '' && option == item.userType){
+      return item;
+    }
+    else if(item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option == item.userType){
+      return item
+    }
+    
+
+  }
   return (
     
       <React.Fragment>
@@ -201,10 +220,12 @@ function Row(props) {
                     </TableRow>
                     <TableRow >
                       
-                      <TableCell component="th" scope="row"> <Button id='123' onClick={()=>{Verify(row.id); setCurrentId(row.id);}} style={row.isVerified ? { width: '130px', backgroundColor: 'red' } : { width: '130px', backgroundColor: 'green' }} variant="contained">{row.isVerified ? 'Unverify' : 'Verify'} {row.isVerified ? <CloseIcon /> : <DoneIcon />} </Button></TableCell>
-                      <TableCell component="th" scope="row"> <Button variant="contained">View Aadhar <ArrowForwardIosIcon style={{fontSize: '15px'}} /></Button></TableCell>
+                      <TableCell component="th" scope="row"> <Button id='123' onClick={()=>{Verify(row.id); setCurrentId(row.id);}} style={row.isVerified ? { width: '130px', backgroundColor: 'green' } : { width: '130px', backgroundColor: 'red' }} variant="contained">{row.isVerified ? 'Verified' : 'Verify'} {row.isVerified ?  <DoneIcon />:null} </Button></TableCell>
+                      <TableCell component="th" scope="row"> <Button variant="contained" onClick={() => { setaadharOpen(!aadharOpen) }}>View Aadhar <ArrowForwardIosIcon style={{fontSize: '15px'}} /></Button></TableCell>
                       <TableCell component="th" scope="row"> <Button onClick={()=>{DeleteEmp(row.id)}}  variant="contained" style={{backgroundColor:'red'}}>Delete <DeleteIcon style={{fontSize: '23px'}} /></Button></TableCell>
                     </TableRow>
+                    
+                    {aadharOpen?<TableRow><img src={row.aadharDocument} style={{height:'200px',width:'370px'}}/></TableRow>:null}
                   </TableBody>
                   <TableFooter>
                     <TableRow>
@@ -266,8 +287,29 @@ function Row(props) {
                   ? post.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   : post
                 ).map((row) => (
+
                   <Row row={row} />
-                ))} */}
+                ))}  */}
+                {(rowsPerPage > 0
+                  ? post.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  : post
+                ).filter((item) => {
+                    
+                  if (searchItem === '' && option === 0) {
+                    return item;
+                  }
+                  else if (
+                    item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option==0) {
+                    return item;
+                  }
+                  else if(searchItem === '' && option == item.userType){
+                    return item;
+                  }
+                  else if(item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option == item.userType){
+                    return item
+                  }
+                }).map((item) => (<Row row={item} />))}
+                
                 
                   {/* {post.filter((item) => {
                     if (searchItem === '' && option ===0) {
@@ -281,7 +323,7 @@ function Row(props) {
                     }
                   }).map((item)=>(<Row row={item}/>))} */}
                   
-                  {post.filter((item) => {
+                  {/* {post.filter((item) => {
                     
                     if (searchItem === '' && option === 0) {
                       return item;
@@ -296,7 +338,7 @@ function Row(props) {
                     else if(item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option == item.userType){
                       return item
                     }
-                  }).map((item) => (<Row row={item} />))}
+                  }).map((item) => (<Row row={item} />))} */}
 
                   
               </TableBody>

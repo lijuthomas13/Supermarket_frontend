@@ -11,15 +11,22 @@ import axios from 'axios'
 import Chart1 from '../components/Chartone';
 import Chart2 from '../components/ChartTwo';
 import Sidebar from '../components/Sidebar';
-import { useParams } from 'react-router-dom';
+import EmployeeRoles from '../components_admin/Dash-comp/EmployeeRoles';
+import WorkingFormat from '../components_admin/Dash-comp/WorkingFormat';
+
+
+
+
+
+
 
 const Dashboard = () => {
-  const [data,setData]=useState(null)
+  const [data,setData]=useState([])
   const [emp, setEmp] = useState([])
   let {id} =useParams()
   const url2=`http://192.168.2.74/employee/${id}`;
   console.log(id)
-  const url="http://192.168.2.74/employee/all";
+
   useEffect(() => 
   {axios.get(url2).then((response) => {
       setEmp(response.data)
@@ -27,6 +34,9 @@ const Dashboard = () => {
       })
   },[])
 
+
+  const url="http://192.168.2.74/employee/all";
+  
 
   const getData=()=>{
     axios.get(url).then((res)=>{
@@ -42,17 +52,33 @@ const Dashboard = () => {
   useEffect(() => {
     getData();
     
-  }, [])
+  }, [data])
 
+  const count=data.filter(obj=>{
+    if(obj.isVerified){
+        return true;
+    }
+    return false;
+    
+}).length;
+
+const count_uv=data.filter(obj=>{
+  if(obj.isVerified){
+      return false;
+  }
+  return true;
   
+}).length;
+  
+
   
   return (<> 
   <div className='AppS'>
-  <Sidebar details={emp}/>
+  <Sidebar/>
 
   <div className='components'>
   <div className='dash'>
-  <div className='greeting'><h1 style={{fontStyle:"inter"}}>Welcome , {emp.firstName}!</h1></div>
+  <div className='greeting'><h1 style={{fontStyle:"inter"}}>Welcome , Akshay !</h1></div>
   <div className='summary'>
     <div className='summary-data'>
       <img src={total} alt="total"></img>
@@ -65,8 +91,8 @@ const Dashboard = () => {
     <div className='summary-data'>
     <img src={Add}  alt="add"></img>
     <div>
-        <h3>2500</h3>
-        <p>New Employees</p>
+        <h3>{count}</h3>
+        <p>VerifiedEmployees</p>
     </div>
 
     
@@ -75,8 +101,8 @@ const Dashboard = () => {
     <div className='summary-data'>
     <img src={resigned}  alt="resigned"></img>
     <div>
-        <h3>2500</h3>
-        <p>Resigned Employees</p>
+        <h3>{count_uv}</h3>
+        <p>Not Verified Employees</p>
     </div>
      
     </div>
@@ -84,8 +110,8 @@ const Dashboard = () => {
   <div className='chart'>
     <div className='datachart'>
       <h5>Employee Roles</h5>
-      <Chart1/>
-     
+      {/* <Chart1/> */}
+     <EmployeeRoles/>
       <div className="details-one">
                 <div>
                 <p><span><img src={circle}></img></span>role 1</p>
@@ -104,7 +130,8 @@ const Dashboard = () => {
     </div>
     <div className='datachart'>
       <h5>Department</h5>
-      <Chart2/>
+      {/* <Chart2/> */}
+      <WorkingFormat/>
     </div>
   </div>
 </div>

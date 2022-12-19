@@ -1,66 +1,34 @@
 import React from 'react'
 import '../styles/AddEmployee.css'
 import icons from '../Assets/icons.svg'
-import Avatar from '@mui/material/Avatar';
-import {useState} from 'react';
-import {storage} from './firebase';
-import 'firebase/storage';
-import {ref, uploadBytes,getDownloadURL} from 'firebase/storage';
+
 
 import {  useFormik } from 'formik'
 import * as Yup from "yup";
 import { FaFileUpload } from 'react-icons/fa'
 import axios from 'axios';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import Button from '@mui/material/Button';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { useNavigate, useParams } from 'react-router-dom';
+import Sidebar from '../components/Sidebar';
 
 
 
-function AddEmployee({setShow , data , setData}) {
-    console.log(data.length)
-    
-    const [imageUpload, setImageUpload] = useState(null)
-    const [downurl, seturl] = useState(null)
+function EditEmployee({setShow}) {
 
     
-    const uploadimage=()=>{ 
-        if (imageUpload == null) return;
-        
-        
-        //uploadBytes(imageref, imageUpload).then(() => alert('image uploaded'))
-        const storageRef = ref(storage, `images/${imageUpload.name}`);
-        uploadBytes(storageRef, imageUpload).then((snapshot) => {
-          alert('image uploaded')
-          console.log('uploaded');
-          getDownloadURL(snapshot.ref).then(url => seturl(url));
-        });
     
-      }
+    let navigate=useNavigate()
+    let {id} = useParams()
+    console.log(id)
+    const url="http://192.168.2.74/employee/all";
+    const edit_url = `http://192.168.2.74/employee/edit/${id}`;
 
-      const [Aadharupload, setAadharUpload] = useState(null)
-      const [AadharUrl, setAadharUrl] = useState(null)
-  
-      
-      const uploadAadhar=()=>{ 
-        
-          if (Aadharupload == null) return;
-          
-          
-          //uploadBytes(imageref, imageUpload).then(() => alert('image uploaded'))
-          const storageRef = ref(storage, `images/${Aadharupload.name}`);
-          uploadBytes(storageRef, Aadharupload).then((snapshot) => {
-            alert('Aadhar uploaded')
-            console.log('AADHAR uploaded');
-            getDownloadURL(snapshot.ref).then(url => setAadharUrl(url));
-            
-          });
-      
-        }
-   
-   
+
+    function HandleEdit( payload){
+        // axios.put(edit_url, payload).then(res =>{navigate('/employees'),console.log("posted", res.status)}).catch(err => console.log(err.response?.status))
+        axios.put(`http://192.168.2.74/employee/edit/${id}`,payload).then(res =>{navigate('/employees')})
+    }
     
-    const add_url = "http://192.168.2.74/employee/add";
+    
     const formik = useFormik({
         initialValues: {
             FirstName: "",
@@ -71,10 +39,9 @@ function AddEmployee({setShow , data , setData}) {
             Designation: "",
             Department: "",
             AadharNumber: "",
-            AadharDocument: null,
-            UserType:'',
+            AadharDocument: ""
             // created_at:""
-            profilePhoto:null
+            // profilePhoto:null
         },
         validationSchema: Yup.object({
             FirstName: Yup.string().max(15, "must be 15 characters or less").required("Required"),
@@ -88,38 +55,36 @@ function AddEmployee({setShow , data , setData}) {
             // .test("FILE_TYPE","Invalid format",(value)=>value && ['image/jpeg','image/png'].includes(value.type))
         }),
         onSubmit: (values) => {
-            console.log(downurl)
-            
-             const payload={firstName:values.FirstName
-                        ,lastName:values.LastName,
-                        address:values.Address,
-                        aadharNumber:values.AadharNumber,
-                        aadharDocument:AadharUrl,
-                        department:values.Department,
-                        designation:values.Designation,
-                        phoneNumber:values.PhoneNumber,
-                        email:values.Email,
-                        UserType:parseInt(values.UserType),
-                        profilePic:downurl
-                        
-            }
-          
-            console.log(payload)
-            axios.post(add_url, payload).then(res => console.log("posted", res.status)).catch(err => console.log(err.response?.status))
-            setShow(false)
-            setData(data.length !== 0 ? [...data, payload] : data);
+            const payload={firstName:values.FirstName
+                ,lastName:values.LastName,
+                address:values.Address,
+                aadharNumber:values.AadharNumber,
+                aadharDocument:values.AadharDocument,
+                department:values.Department,
+                designation:values.Designation,
+                phoneNumber:values.PhoneNumber,
+                email:values.Email,
+                UserType:parseInt(values.UserType),}
            
+           
+         
+            console.log(values)
+            // axios.put(edit_url, payload).then(res =>{navigate('/employees'),console.log("posted", res.status)}).catch(err => console.log(err.response?.status))
+            HandleEdit(payload)
            
 
         }
 
     })
     return (
-        <div className='div_main'>
+        <div>
+            <Sidebar/>
+            <div className='components'>
+            <div className='div_main'>
             <div className='path'>
                 <p><a href='/Employees' style={{ textDecoration: "none", color: "#000000" }}>Employees</a> <a href='/AddEmployee' style={{ textDecoration: "none", color: "#000000" }}>Add New Employees</a></p>
             </div>
-            <div className='head'><h2>Add Employee</h2></div>
+            <div className='head'><h2>Edit Employee</h2></div>
 
             <div className='div_form'>
                 <form onSubmit={formik.handleSubmit}>
@@ -128,17 +93,13 @@ function AddEmployee({setShow , data , setData}) {
 
 
                     <div className='profile_pic'>
-                     <div >
-                     {downurl?<Avatar alt="Travis Howard" src={downurl} />:<img src={icons} style={{ width: "80px" }} />}
-                     </div>
+                     <div ><img src={icons} style={{ width: "80px" }} /></div>
                      <div ><h5>Profile</h5></div>
                      <div className='upload_option'>
-                        <input type="file" name="file" id="file" class="myclass1" onChange={(event)=>{setImageUpload(event.target.files[0])}} value={formik.values.file} onBlur={formik.handleBlur}></input>
-                        
-                        <label for="file"><AttachFileIcon />Select Photo</label>
-                        
+                        <input type="file" name="file" id="file" class="myclass1" onChange={formik.handleChange} value={formik.values.file} onBlur={formik.handleBlur}></input>
+                        {formik.errors.file ? <p className='error'>{formik.errors.file}</p> : null}
+                        <label for="file"><FaFileUpload />Upload Photo</label>
                     </div>
-                    {imageUpload?<Button style={{width:'220px'}} variant="contained" onClick={uploadimage}>Upload <UploadFileIcon/></Button>:null}
 
                        
                     </div>
@@ -181,25 +142,18 @@ function AddEmployee({setShow , data , setData}) {
                                 </div>
                             </div> */}
                            
-                                {/* <div class="form-outline">
+                                <div class="form-outline">
                                     <input type="text" id="AadharDocument" class="form" placeholder='Aadhar Document' onChange={formik.handleChange} value={formik.values.AadharDocument} onBlur={formik.handleBlur} />
                                     {formik.touched.AadharDocument && formik.errors.AadharDocument ? <p className='error'>{formik.errors.AadharDocument}</p> : null}
-                                </div> */}
-                           
-                                <div>
-                                    <input type='file' onChange={(event)=>{setAadharUpload(event.target.files[0])}}></input>
-                                    {/* <Button variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button> */}
-                                    {Aadharupload?<Button variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button>:null}
                                 </div>
-                            
-                                
+                           
            
                                 <div class="form-outline">
                                     <input type="text" id="Designation" class="form" placeholder='Designation' onChange={formik.handleChange} value={formik.values.Designation} onBlur={formik.handleBlur} />
                                     {formik.touched.Designation && formik.errors.Designation ? <p className='error'>{formik.errors.Designation}</p> : null}
                                 </div>
                           
-                                
+
 
                        
                        
@@ -222,30 +176,29 @@ function AddEmployee({setShow , data , setData}) {
                          
                                 <div class="col-md-6 mb-4" >
                                     <select class="dept_options" id="Department" onChange={formik.handleChange} value={formik.values.Department} onBlur={formik.handleBlur}>
-                                        <option value="Department" >Department</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Sales">Sales</option>
-                                        <option value="Manager">Manager</option>
+                                        <option className='option' value="Department" >Department</option>
+                                        <option className='option' value="Finance">Finance</option>
+                                        <option className='option' value="Sales">Sales</option>
+                                        <option className='option' value="Manager">Manager</option>
                                     </select>
                                 </div>
-
                                 <div class="col-md-6 mb-4 ">
 
-                                <select className="options_add" id="UserType" onChange={formik.handleChange} value={formik.values.UserType} onBlur={formik.handleBlur}>
+                                        <select className="options_add" id="UserType" onChange={formik.handleChange} value={formik.values.UserType} onBlur={formik.handleBlur}>
 
-                                <option value="">User type</option>
+                                        <option value="">User type</option>
 
-                                <option value="1">Employee</option>
+                                        <option value="1">Employee</option>
 
-                                <option value="2">Human Resource</option>
+                                        <option value="2">Human Resource</option>
 
-                                <option value="3">Administrator</option>
+                                        <option value="3">Administrator</option>
 
-                                </select>
+                                        </select>
 
-                                {/* {formik.touched.user_type&&formik.errors.user_type?<p className='error'>{formik.errors.user_type}</p>:null} */}
+{/* {formik.touched.user_type&&formik.errors.user_type?<p className='error'>{formik.errors.user_type}</p>:null} */}
 
-                            </div>
+                                    </div>
                                 <div class="textArea">
                                     <textarea style={{width:"300px"}} rows="6" column=
                                     "10" type="text" id="Address" class="form-control" placeholder='Address' onChange={formik.handleChange} value={formik.values.Address} onBlur={formik.handleBlur} />
@@ -260,7 +213,10 @@ function AddEmployee({setShow , data , setData}) {
                 </form>
             </div>
         </div>
+            </div>
+        </div>
+       
     )
 }
 
-export default AddEmployee
+export default EditEmployee

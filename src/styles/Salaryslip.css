@@ -1,0 +1,22 @@
+#salary_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #salary_table td, #salary_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #salary_table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #salary_table tr:hover {background-color: #ddd;}
+  
+  #salary_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #010322;
+    color: white;
+  }

@@ -2,7 +2,7 @@ import React from 'react'
 import icon from "../Assets/usericon.svg"
 import { GrMail } from "react-icons/gr";
 import { BsFillTelephoneFill } from "react-icons/bs";
-
+import Avatar from '@mui/material/Avatar';
 import { GoVerified } from "react-icons/go";
 import { GoUnverified } from "react-icons/go";
 import LongMenu from './Threedot';
@@ -18,12 +18,13 @@ const EachEmployee = (props) => {
         <div className='profile'>
           <div className='imagee'>
             <div>{props.verification?<GoVerified style={{color:"green"}}/>:<GoUnverified style={{color:"red"}}/>}</div>
-            <div><img src={icon}></img></div>
-            <div><LongMenu  eachemployee={props.eachemployee} data={props.data} setData={props.setData} setEdit={props.setEdit} setId={props.setId}/></div>
+            {console.log(props.profilePic)}
+            <div><Avatar alt="Travis Howard" src={props.profilePic} /></div>
+            <div><LongMenu  eachemployee={props.eachemployee} data={props.data} setData={props.setData}/></div>
           </div>
          
        
-        <h4>{props.firstname} {props.lastName}</h4>
+        <h4 style={{color:'#010322'}}>{props.firstname} {props.lastName}</h4>
         <p>{props.designation}</p>
         
 

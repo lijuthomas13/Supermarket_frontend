@@ -7,9 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Dashbord from '../components_admin/Dashbord';
 import Employees from '../components_admin/Employees';
 import {Sidebar_data} from '../helpers/Sidebar_data.js' 
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import axios from 'axios';
+
+
 function Adminorg() {
     const [emp, setEmp] = useState([])
     let {id} =useParams()
@@ -23,6 +22,7 @@ function Adminorg() {
         })
     },[])
     console.log(emp)
+    
     const employee ={
 
         id: 1233,
@@ -54,8 +54,8 @@ function Adminorg() {
                             {/* <FaUserCircle id='img'/> */}
                         </div>
                         <div id='user-details'>
-                            <h4>{emp.firstName} {emp.lastName}</h4>
-                            <p>{emp.designation}</p>    
+                            <h4>{employee.FirstName} {employee.LastName}</h4>
+                            <p>{employee.Designation}</p>    
                         </div>
                     </div>
                 </div>
@@ -90,8 +90,11 @@ function Adminorg() {
         {Sidebar_data.map((Item)=>{
             return(
                 <>
-                {(page===Item.id?<div id='right'>{<Item.component data={emp}/>}</div>:null)}
+                {(page===Item.id?<div id='right'>{<Item.component data={employee}/>}</div>:null)}
                 </>
+                    
+                    
+                
             )
         })}
     </div>

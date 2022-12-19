@@ -74,8 +74,23 @@ function Row(props) {
   const { row } = props
   const [open, setOpen] =useState(false);
   const [searched, setSearched] = useState("");
-  const Salary=[{"salaryComp":"Onam Bonus","amount":2000},{"salaryComp":"House Loan","amount":1000},{"salaryComp":"Basic Pay","amount":30000}];
   const Total_salary={netSalary:33500,totalGross:34000,totalDeduction:500}
+  const [salary, setSalary] = useState([]);
+  React.useEffect(() => {
+    axios.get(`http://192.168.2.74/salary/view/${row.id}/all`).then((response) => {
+      setSalary(response.data);
+    });
+  }, []);
+  console.log(salary,'salaary of emp')
+
+  const [totalSalary, setTotalSalary] = useState({});
+  React.useEffect(() => {
+    axios.get(`http://192.168.2.74/Salary/Totals/${row.id}`).then((response) => {
+      setTotalSalary(response.data);
+    });
+  }, []);
+  console.log(totalSalary,'totalsalaary of emp')
+
  
   return (
     
@@ -113,21 +128,21 @@ function Row(props) {
                 </Typography>
                 <Table size="small" aria-label="purchases">
                   <TableBody>
-                    {Salary.map((item)=>(<TableRow >
+                    {salary.map((item)=>(<TableRow >
                       <TableCell component="th" scope="row">{item.salaryComp}</TableCell>
                       <TableCell align="leftt">{item.amount}</TableCell>
                     </TableRow>))} 
-                    <TableRow>
-                      <TableCell>Net Salary</TableCell>
-                      <TableCell component="th" scope="row">{Total_salary.netSalary}</TableCell>
+                    <TableRow style={{backgroundColor:'#E5EAFF'}}>
+                      <TableCell><strong>Net Salary</strong></TableCell>
+                      <TableCell component="th" scope="row"><strong>Rs {totalSalary.netSalary}/-</strong></TableCell>
                     </TableRow>
-                    <TableRow>
-                      <TableCell>Deduction</TableCell>
-                      <TableCell component="th" scope="row">{Total_salary.totalDeduction}</TableCell>
+                    <TableRow style={{backgroundColor:'#E5EAFF'}}>
+                      <TableCell><strong>Deduction</strong></TableCell>
+                      <TableCell component="th" scope="row"><strong>Rs {totalSalary.totalDeduction}/-</strong></TableCell>
                     </TableRow>
-                    <TableRow>
-                      <TableCell>Gross</TableCell>
-                      <TableCell component="th" scope="row">{Total_salary.totalGross}</TableCell>
+                    <TableRow style={{backgroundColor:'#E5EAFF'}}>
+                      <TableCell><strong>Gross</strong></TableCell>
+                      <TableCell component="th" scope="row"><strong>Rs {totalSalary.totalGross}/-</strong></TableCell>
                     </TableRow>
                                      
                   </TableBody>

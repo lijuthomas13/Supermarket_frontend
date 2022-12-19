@@ -3,6 +3,7 @@ import icon from '../Assets/icons.svg'
 import '../styles/component.css';
 import { useState,useEffect } from 'react';
 import axios  from 'axios';
+import Avatar from '@mui/material/Avatar';
 
 function EmployeeDetails({details}) {
   // console.log(props)
@@ -19,7 +20,7 @@ function EmployeeDetails({details}) {
     <div className='emp_container'>
       <div className='head1'>Employee Details
           <div className='icon2'>
-            <img style={{width:"100px"}} src={icon} />
+          <Avatar style={{width:'100px',height:'100px'}} alt="Travis Howard" src={employee.profilePic} />
           </div>
       </div>
       <div className='emp_details'>

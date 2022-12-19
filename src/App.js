@@ -8,9 +8,11 @@ import Payroll from './Pages/Payroll';
 import Employees from './Pages/Employees'
 
 import Sidebar from './components/Sidebar';
-import EditEmployee from './components/EditEmployee';
+import EditEmployee from './Pages/EditEmployee';
+import Error from './Pages/Error';
 import EmployeePage from './Pages/EmployeePage';
 import Adminorg from './Pages/Adminorg';
+import Salaryslip from './components/Salaryslip';
 function App() {
   return (
     <div className="App">
@@ -28,9 +30,9 @@ function App() {
             {/* <Route path='/editEmployee/:id' element={<EditEmployee/>}/> */}
             <Route path='/employeePage/:id' element={<EmployeePage/>}/>
             <Route path='/admin/:id' element={<Adminorg/>}/>
-          
-          
-      
+            <Route path='/error' element={<Error/>}/>
+            <Route path="*" element={<Error/>} />
+            <Route path="salary" element={<Salaryslip/>} />
         
           </Routes>
       </div>
