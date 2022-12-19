@@ -1,4 +1,4 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import '../styles_admin/Adminorg.css';
 import { FaUserCircle } from 'react-icons/fa';
 import { MdOutlineDashboard } from 'react-icons/md';
@@ -7,7 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Dashbord from '../components_admin/Dashbord';
 import Employees from '../components_admin/Employees';
 import {Sidebar_data} from '../helpers/Sidebar_data.js' 
-
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function Adminorg() {
     const [emp, setEmp] = useState([])
@@ -49,13 +50,12 @@ function Adminorg() {
                 <div id='child-user-details'>
                     <div id='user-info'>
                         <div id='user-img'>
-
-                             <Avatar id='img' sx={{ bgcolor: '#E5EAFF',color:' #010322' }}>{employee.FirstName.charAt(0)}</Avatar>
+                        <Avatar id='img' alt="Travis Howard" src={emp.profilePic} />
                             {/* <FaUserCircle id='img'/> */}
                         </div>
                         <div id='user-details'>
-                            <h4>{employee.FirstName} {employee.LastName}</h4>
-                            <p>{employee.Designation}</p>    
+                            <h4>{emp.firstName} {emp.lastName}</h4>
+                            <p>{emp.designation}</p>    
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ function Adminorg() {
         {Sidebar_data.map((Item)=>{
             return(
                 <>
-                {(page===Item.id?<div id='right'>{<Item.component data={employee}/>}</div>:null)}
+                {(page===Item.id?<div id='right'>{<Item.component data={emp}/>}</div>:null)}
                 </>
                     
                     

@@ -5,7 +5,9 @@ import { useState } from 'react'
 import CustomPaginationActionsTable from '../components/Table'
 import Sidebar from '../components/Sidebar'
 import Table from '../components/Table'
-
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { useEffect } from 'react'
 const Payroll = () => {
   const [emp, setEmp] = useState([])
   let {id} =useParams()

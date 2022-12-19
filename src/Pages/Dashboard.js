@@ -13,7 +13,7 @@ import Chart2 from '../components/ChartTwo';
 import Sidebar from '../components/Sidebar';
 import EmployeeRoles from '../components_admin/Dash-comp/EmployeeRoles';
 import WorkingFormat from '../components_admin/Dash-comp/WorkingFormat';
-
+import { useParams } from 'react-router-dom';
 
 
 
@@ -74,7 +74,7 @@ const count_uv=data.filter(obj=>{
   
   return (<> 
   <div className='AppS'>
-  <Sidebar/>
+  <Sidebar details={emp}/>
 
   <div className='components'>
   <div className='dash'>

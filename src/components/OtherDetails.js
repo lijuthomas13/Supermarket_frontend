@@ -31,4 +31,3 @@ function OtherDetails({details}) {
 }
 
 export default OtherDetails
-export default OtherDetails

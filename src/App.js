@@ -33,6 +33,7 @@ function App() {
             <Route path='/error' element={<Error/>}/>
             <Route path="*" element={<Error/>} />
             <Route path="salary" element={<Salaryslip/>} />
+            
         
           </Routes>
       </div>
