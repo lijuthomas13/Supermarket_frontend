@@ -16,11 +16,17 @@ function EditEmployee({id, setEdit}) {
     
   let navigate=useNavigate()
    
-  
+    const [data,setData]=useState([])
     const url="http://192.168.2.74/employee/all";
     const edit_url = `http://192.168.2.74/employee/edit/${id}`;
+    const url2=`http://192.168.2.74/employee/${id}`
 
-
+    useEffect(() => {
+        {axios.get(url2).then((response) => {
+              setData(response.data)
+              console.log(response.data)
+              })}
+          },[url2])
     // function HandleEdit( payload){
     //     axios.put(`http://192.168.2.74/employee/edit/${id}`,payload).then(res =>{navigate('/employees')})
           
@@ -38,10 +44,10 @@ function EditEmployee({id, setEdit}) {
        
       }
   
-      
+    //   console.log(data.firstName)
     const formik = useFormik({
         initialValues: {
-            FirstName: "",
+            FirstName: data.firstName,
             LastName: "",
             Email: "",
             PhoneNumber: "",
@@ -89,7 +95,7 @@ function EditEmployee({id, setEdit}) {
     return (
         <div>
             
-            <div className='components'>
+            
             <div className='div_main'>
             <div className='path'>
                 <p><a href='/Employees' style={{ textDecoration: "none", color: "#000000" }}>Employees</a> <a href='/AddEmployee' style={{ textDecoration: "none", color: "#000000" }}>Add New Employees</a></p>
@@ -174,9 +180,9 @@ function EditEmployee({id, setEdit}) {
                                 </div>
                            
                             
-                                <div class="form-outline datepicker w-100">
+                                {/* <div class="form-outline datepicker w-100">
                                     <input type="date" class="form" id="OnboardingDate" placeholder='Onboarding Date' />
-                                </div>
+                                </div> */}
                             
                        
 
@@ -224,7 +230,7 @@ function EditEmployee({id, setEdit}) {
             </div>
         </div>
             </div>
-        </div>
+      
        
     )
 }

@@ -152,9 +152,9 @@ function AddEmployee({setShow , data , setData}) {
                                 </div>
                            
                             
-                                <div class="form-outline datepicker w-100">
+                                {/* <div class="form-outline datepicker w-100">
                                     <input type="date" class="form" id="OnboardingDate" placeholder='Onboarding Date' />
-                                </div>
+                                </div> */}
                             
                        
 
