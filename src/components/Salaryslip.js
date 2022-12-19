@@ -23,8 +23,8 @@ export default function Salaryslip() {
 
     return (
         <div>
-            <header ref={pdfRef}>
-                <div style={{width: '640px',height:'550px',backgroundColor:'#D9DFFB',textAlign:'center'}}>
+            <header  ref={pdfRef}>
+                <div class="hidden" style={{width: '640px',height:'550px',backgroundColor:'#D9DFFB',textAlign:'center',dataHtml2canvasIgnore:"false"}}>
                 <h5 style={{textAlign:'center'}}>Salary Slip</h5>
                 <h6>Name : Liju Thomas</h6>
                 <h6>ID : 91</h6>

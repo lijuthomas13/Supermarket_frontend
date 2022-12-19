@@ -134,15 +134,15 @@ function Row(props) {
                     </TableRow>))} 
                     <TableRow style={{backgroundColor:'#E5EAFF'}}>
                       <TableCell><strong>Net Salary</strong></TableCell>
-                      <TableCell component="th" scope="row"><strong>{totalSalary.netSalary}</strong></TableCell>
+                      <TableCell component="th" scope="row"><strong>Rs {totalSalary.netSalary}/-</strong></TableCell>
                     </TableRow>
                     <TableRow style={{backgroundColor:'#E5EAFF'}}>
                       <TableCell><strong>Deduction</strong></TableCell>
-                      <TableCell component="th" scope="row"><strong>{totalSalary.totalDeduction}</strong></TableCell>
+                      <TableCell component="th" scope="row"><strong>Rs {totalSalary.totalDeduction}/-</strong></TableCell>
                     </TableRow>
                     <TableRow style={{backgroundColor:'#E5EAFF'}}>
                       <TableCell><strong>Gross</strong></TableCell>
-                      <TableCell component="th" scope="row"><strong>{totalSalary.totalGross}</strong></TableCell>
+                      <TableCell component="th" scope="row"><strong>Rs {totalSalary.totalGross}/-</strong></TableCell>
                     </TableRow>
                                      
                   </TableBody>
