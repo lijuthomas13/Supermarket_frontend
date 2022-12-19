@@ -290,6 +290,26 @@ function Row(props) {
 
                   <Row row={row} />
                 ))}  */}
+                {(rowsPerPage > 0
+                  ? post.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  : post
+                ).filter((item) => {
+                    
+                  if (searchItem === '' && option === 0) {
+                    return item;
+                  }
+                  else if (
+                    item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option==0) {
+                    return item;
+                  }
+                  else if(searchItem === '' && option == item.userType){
+                    return item;
+                  }
+                  else if(item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option == item.userType){
+                    return item
+                  }
+                }).map((item) => (<Row row={item} />))}
+                
                 
                   {/* {post.filter((item) => {
                     if (searchItem === '' && option ===0) {
@@ -303,7 +323,7 @@ function Row(props) {
                     }
                   }).map((item)=>(<Row row={item}/>))} */}
                   
-                  {post.filter((item) => {
+                  {/* {post.filter((item) => {
                     
                     if (searchItem === '' && option === 0) {
                       return item;
@@ -318,7 +338,7 @@ function Row(props) {
                     else if(item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) &&option == item.userType){
                       return item
                     }
-                  }).map((item) => (<Row row={item} />))}
+                  }).map((item) => (<Row row={item} />))} */}
 
                   
               </TableBody>
