@@ -32,6 +32,8 @@ import DateRangePicker from '@wojtekmaj/react-daterange-picker/dist/entry.nostyl
 import '../../src/styles_admin/Employee/Table.css'
 import Delete from '@mui/icons-material/Delete';
 import "bootstrap/dist/css/bootstrap.min.css";
+import EditIcon from '@mui/icons-material/Edit';
+import TextField from '@mui/material/TextField';
 function Payroll() {
 
   const [searchItem,setSearchItem]=useState("")
@@ -76,6 +78,7 @@ function Row(props) {
   const [searched, setSearched] = useState("");
   const Total_salary={netSalary:33500,totalGross:34000,totalDeduction:500}
   const [salary, setSalary] = useState([]);
+  const [editOption,setEditOption]=useState(false)
   React.useEffect(() => {
     axios.get(`http://192.168.2.74/salary/view/${row.id}/all`).then((response) => {
       setSalary(response.data);
@@ -131,6 +134,14 @@ function Row(props) {
                     {salary.map((item)=>(<TableRow >
                       <TableCell component="th" scope="row">{item.salaryComp}</TableCell>
                       <TableCell align="leftt">{item.amount}</TableCell>
+                      {/* <Button onClick={setEditOption(!editOption)} color="primary" >
+                        <EditIcon />
+                      </Button>
+                      <TableCell>
+                      {editOption?<TextField style={{height:'5px'}} id="outlined-basic" label="Outlined" variant="standard" />:null}
+                      </TableCell> */}
+                      
+
                     </TableRow>))} 
                     <TableRow style={{backgroundColor:'#E5EAFF'}}>
                       <TableCell><strong>Net Salary</strong></TableCell>
