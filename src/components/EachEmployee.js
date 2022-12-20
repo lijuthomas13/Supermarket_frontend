@@ -18,8 +18,8 @@ const EachEmployee = (props) => {
         <div className='profile'>
           <div className='imagee'>
             <div>{props.verification?<GoVerified style={{color:"green"}}/>:<GoUnverified style={{color:"red"}}/>}</div>
-            {console.log(props.profilePic)}
-            <div><Avatar alt="Travis Howard" src={props.profilePic} /></div>
+            {/* {console.log(props.eachemployee.profilePic)} */}
+            <div><Avatar  src={props.eachemployee.profilePic} /></div>
             <div><LongMenu  eachemployee={props.eachemployee} data={props.data} setData={props.setData} setId={props.setId} setEdit={props.setEdit}/></div>
           </div>
          

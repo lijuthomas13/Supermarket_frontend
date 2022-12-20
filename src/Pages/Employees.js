@@ -95,7 +95,7 @@ import '../styles/employeedata.css'
 import AddEmployee from '../components/AddEmployee';
 import EmployeeMain from '../components/EmployeeMain';
 import Sidebar from '../components/Sidebar';
-import EditEmployee from '../components/EditEmployee'
+import EditEmployee from '../components/Editemp'
 import { useParams } from 'react-router-dom';
 
 const Employees = () => {
