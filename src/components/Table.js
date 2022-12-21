@@ -37,6 +37,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import EditSalary from './EditSalary';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 function Payroll() {
   const [editOpen,setEditOpen]=useState(false)
   const [editEmpId,setEditEmpId]=useState(null)
@@ -129,7 +130,7 @@ function Row(props) {
           <TableCell component="th" scope="row">{row.lastName}</TableCell>
           <TableCell component="th" scope="row">{row.email}</TableCell>
           <TableCell component="th" scope="row">{row.designation}</TableCell>
-          <TableCell component="th" scope="row">{totalSalary.netSalary!==0?null:<Button onClick={handleEditDropdown} ><AddIcon /></Button>}</TableCell>
+          <TableCell align="center" component="th" scope="row">{totalSalary.netSalary!==0?<TaskAltIcon style={{ color: 'green', fontSize: '25px' }}/>:<Button onClick={handleEditDropdown} ><AddIcon /></Button>}</TableCell>
           <TableCell align="center" component="th" scope="row">{row.isVerified ? <VerifiedUserIcon style={{ color: 'green', fontSize: '25px' }} /> : <GppBadIcon style={{ color: 'red', fontSize: '29px' }} />}</TableCell>
         </TableRow>
         <TableRow>
@@ -221,7 +222,7 @@ function Row(props) {
                 <TableCell >LastName</TableCell>
                 <TableCell >E-mail</TableCell>
                 <TableCell >Designation</TableCell>
-                <TableCell >Add Salary</TableCell>
+                <TableCell align="center" >Add Salary</TableCell>
                 <TableCell align="center">Verification status</TableCell>
               </TableRow>
             </TableHead>
