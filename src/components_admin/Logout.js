@@ -1,8 +1,9 @@
 import { List } from '@mui/material';
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-
+import Button from '@mui/material/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
+import LogoutIcon from '@mui/icons-material/Logout';
 function Logout() {
     const navigate=useNavigate();
     function yes(){
@@ -12,9 +13,12 @@ function Logout() {
         navigate('/adminorg')
     }
   return (
-    <div>
-        <h1>do u want to logout?</h1>
-        <button onClick={yes}>yes</button>
+    <div class='container' style={{alignItems:'center',justifyContent:'center',textAlign: 'center'}}>
+        <h1 style={{textAlign: 'center'}}>Do you want to logout?</h1>
+        
+        <Button variant="contained" onClick={yes} style={{backgroundColor:'red'}} endIcon={<LogoutIcon />}>
+          Log Out
+        </Button>
         <List/>
     </div>
     
