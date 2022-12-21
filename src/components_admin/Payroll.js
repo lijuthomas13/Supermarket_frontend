@@ -161,7 +161,7 @@ function Row(props) {
 
   return (
     <div class='container' >
-      <h1>Salary Details</h1>
+      <h1 id='salary_header'>Salary Details</h1>
       <div class='card' id='table_comp' >
         <div class='container'>
           <div class='row'>

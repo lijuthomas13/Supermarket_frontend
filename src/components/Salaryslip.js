@@ -15,9 +15,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-export default function Salaryslip() {
+export default function Salaryslip(props) {
 
-    const id=12;
+    const id=props.id;
     const [emp, setEmp] = useState([]);
     
         axios.get(`http://192.168.2.74/employee/${id}`).then((response)=>{
@@ -60,14 +60,14 @@ export default function Salaryslip() {
     };
 
     return (
-        <div style={{backgroundColor:'#D9DFFB',height:'100vh',textAlign:'center',alignContent:'center'}}>
+        <div style={{backgroundColor:'#E5EAFF',height:'120vh',textAlign:'center',alignContent:'center'}}>
             <div style={{display:'flex',justifyContent:'center'}}>
             <header  ref={pdfRef}>
-                <div  style={{width: '640px',height:'650px',backgroundColor:'#D9DFFB',textAlign:'center',dataHtml2canvasIgnore:"false"}}>
+                <div  style={{width: '640px',height:'570px',backgroundColor:'white',textAlign:'center',dataHtml2canvasIgnore:"false"}}>
                 <h5 style={{textAlign:'center'}}>Salary Slip</h5>
-                <h6>Name : {emp.firstName} {emp.lastName}</h6>
-                <h6>ID : {emp.id}</h6>
-                <h6>Designation :{emp.designation}</h6>
+                <h6 style={{color:'black'}}>Name : {emp.firstName} {emp.lastName}</h6>
+                <h6 style={{color:'black'}}>ID : {emp.id}</h6>
+                <h6 style={{color:'black'}}>Designation :{emp.designation}</h6>
                 
                 <br/>
                 
@@ -113,7 +113,7 @@ export default function Salaryslip() {
         </div>
         <div>
         
-        {flag? <Button onClick={handleDownload} variant="contained" endIcon={<DownloadIcon />}>
+        {flag? <Button style={{backgroundColor:'#010322'}} onClick={handleDownload} variant="contained" endIcon={<DownloadIcon />}>
         Download
       </Button>:<CircularProgress />}
         </div>

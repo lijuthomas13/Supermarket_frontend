@@ -2,6 +2,7 @@ import React from 'react'
 import EmployeeDetails from './EmployeeDetails'
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import '../styles/EmployeePage.css';
 function OtherDetails({details}) {
   // const emp_url=`http://192.168.2.74/employee/${props.id}`
   // const[employee,setEmployee]=useState([])

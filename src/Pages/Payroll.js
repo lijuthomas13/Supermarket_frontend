@@ -7,7 +7,6 @@ import CustomPaginationActionsTable from '../components/Table'
 import Sidebar from '../components/Sidebar'
 import Table from '../components/Table'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import { useEffect } from 'react'
 const Payroll = () => {
   const [emp, setEmp] = useState([])
@@ -34,8 +33,8 @@ const Payroll = () => {
       <Sidebar  details={emp}/>
 
       <div className='components'>
-        <div class="box">
-          <div className='addemployee'>
+        <div class="boxx">
+          <div className='payemployee'>
             <div className='one'>
               <h1>{post.length}</h1>
               <p>Employees</p>

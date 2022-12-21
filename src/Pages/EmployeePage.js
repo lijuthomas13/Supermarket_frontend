@@ -9,9 +9,14 @@ import OtherDetails from '../components/OtherDetails'
 import SalaryDetails from '../components/SalaryDetails'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
+import DownloadIcon from '@mui/icons-material/Download';
 import { useParams } from 'react-router-dom'
+import Salaryslip from '../components/Salaryslip'
+import Avatar from '@mui/material/Avatar';
+import DownloadingIcon from '@mui/icons-material/Downloading';
+import Button from '@mui/material/Button';
 function EmployeePage() {
-
+  const [salaryOpen,setSalaryOpen]=useState(false)
   // const id=19;
   // const location = useLocation();
   // const { id } = location.state;
@@ -24,7 +29,7 @@ function EmployeePage() {
   //     console.log(response.data)
   //   })
   // }, [])
-
+  console.log(salaryOpen)
   const [emp, setEmp] = useState([])
   let {id} =useParams()
   const url2=`http://192.168.2.74/employee/${id}`;
@@ -34,6 +39,7 @@ function EmployeePage() {
   const url="http://192.168.2.74/employee/all";
 
   
+
   useEffect(() => {
     const getData=async()=>{
 
@@ -49,17 +55,28 @@ function EmployeePage() {
   //     console.log(response.data)
   //     })
   // },[])
+
+  const [salary,setSalary]=useState([])
+  const url_salary=`http://192.168.2.74/Salary/Totals/${id}`
+  
+  useEffect(() => {
+    {axios.get(url_salary).then((response) => {
+          setSalary(response.data)
+          console.log(response.data)
+          })}
+      },[url_salary])
+  console.log(salary)
   return (
 
     <div className='outer-div'>
       <div className='innerdiv-top'>
         <div className='topdiv1'>
           <div className='icon'>
-            <img src={icon} />
+          <Avatar style={{width:'60px',height:'60px'}} alt="Travis Howard" src={emp.profilePic} />
           </div>
           <div className='emp_head'>
-            <h3 style={{ color: "#D9DFFB", fontFamily: "Inter" ,margin:"8px"}}>{emp.firstName} {emp.lastName}</h3>
-            <p style={{ color: "#D9DFFB", fontSize: "14px", fontFamily: "Inter",marginLeft:"10px" }}>{emp.designation}</p>
+            <h4 style={{ color: "#D9DFFB", fontFamily: "Inter" ,textAlign:'left'}}>{emp.firstName} {emp.lastName}</h4>
+            <p style={{ color: "#D9DFFB", fontSize: "14px", fontFamily: "Inter" }}>{emp.designation}</p>
           </div>
         </div>
         <div className='topdiv2'>
@@ -75,11 +92,35 @@ function EmployeePage() {
         <div className='grid-container'>
           <div className='grid1'><EmployeeDetails details={emp} /></div>
           <div className='grid2'><OtherDetails details={emp} /></div>
-          <div className='grid3'><SalaryDetails details={emp} /></div>
+          <div className='grid3'>
+            <>
+              <div className='head2'>Salary Details</div>
+              <div className='details'>
+                <p>Gross Salary:</p>
+                <p>Deduction:</p>
+                <p>Net Salary:</p>
+              </div>
+              <div className='show_Otherdetails'>
+                <p>{salary.totalGross}</p>
+                <p>{salary.totalDeduction}</p>
+                <p>{salary.netSalary}</p>
+                
+                
+                <Button style={{backgroundColor:'#010322'}} onClick={()=>{setSalaryOpen(true)}} variant="contained" endIcon={<DownloadingIcon />}>
+                <a id='salary_link' href="#salary_section">Generate Payslip</a>
+      </Button>
+              </div>
+
+            </>
+          </div>
         </div>
+        
 
       </div>
-
+      <div id='salary_section'>
+      {salaryOpen?<Salaryslip id={id}/>:null}
+      </div>
+      
     </div>
   )
 }

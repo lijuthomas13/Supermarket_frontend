@@ -32,8 +32,8 @@ function App() {
             <Route path='/admin/:id' element={<Adminorg/>}/>
             <Route path='/error' element={<Error/>}/>
             <Route path="*" element={<Error/>} />
-            <Route path="salary" element={<Salaryslip/>} />
-            
+            {/* <Route path="/employeePage/salary/:idd" element={<Salaryslip/>} />
+             */}
         
           </Routes>
       </div>

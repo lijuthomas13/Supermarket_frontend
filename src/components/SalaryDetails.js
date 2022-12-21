@@ -2,10 +2,12 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import DownloadIcon from '@mui/icons-material/Download';
 function SalaryDetails({details}) {
   const [salary,setSalary]=useState([])
   const url_salary=`http://192.168.2.74/Salary/Totals/${details.id}`
+  
   useEffect(() => {
     {axios.get(url_salary).then((response) => {
           setSalary(response.data)
@@ -26,7 +28,7 @@ function SalaryDetails({details}) {
         <p>{salary.totalGross}</p>
         <p>{salary.totalDeduction}</p>
         <p>{salary.netSalary}</p>
-        <button className='payslip-btn' value="download"><DownloadIcon />Payslip</button>
+        <button className='payslip-btn' value="download"><DownloadIcon  />Payslip</button>
        </div>
        
     </>

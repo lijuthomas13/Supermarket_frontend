@@ -54,8 +54,8 @@ function Adminorg() {
                             {/* <FaUserCircle id='img'/> */}
                         </div>
                         <div id='user-details'>
-                            <h4>{emp.firstName} {emp.lastName}</h4>
-                            <p>{emp.designation}</p>    
+                            <h4>{emp.firstName} </h4>
+                            <p style={{color:'white'}}>{emp.designation}</p>    
                         </div>
                     </div>
                 </div>

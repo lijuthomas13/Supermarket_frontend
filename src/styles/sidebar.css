@@ -11,6 +11,7 @@
   padding-top: 20px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 
 
 
@@ -27,22 +28,26 @@
     border:#B4BCE5 1px solid;
     border-radius: 25px;
     height: 80px;
-    width:270px;
+    width:200px;
     margin-bottom: 70px;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
     
 }
 .details{
-    text-align: center;
+    text-align: left;
 }
-.details h3{
-    color:#B4BCE5;
-    margin:6px 5px;
+.details h4{
+    
+    text-align: left;
 
 
 }
 .details p{
  
-    color:#B4BCE5
+    color:yellow
    
 
 
@@ -96,13 +101,41 @@
     font-weight: 500;
     color:#E5EAFF;
     
-   
-   
-}
-.link:active{
-    color:aqua
     
+
+    
+   
+   
 }
+
 span{
     margin-right: 10px;
+}
+ 
+@media only screen and (max-width: 1400px) {
+    .link{
+        text-decoration: none;
+        font-size: 18px;
+        font-family: 'Inter';
+        
+        
+    }
+    .dashboard{
+        margin-bottom: 10px;
+
+    }
+    .payroll{
+        margin-bottom: 10px;
+
+
+    }
+    .employees{
+        margin-bottom: 10px;
+
+
+    }
+    .users{
+        margin-bottom: 40px;
+       
+    }
 }

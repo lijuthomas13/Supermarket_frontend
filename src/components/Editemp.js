@@ -1,5 +1,7 @@
 import React, { useState ,useEffect} from 'react'
 import axios from 'axios'
+import Button from '@mui/material/Button';
+
 
 const EditEmployee = ({id,setEdit}) => {
   const [data,setData]=useState([])
@@ -35,11 +37,12 @@ const EditEmployee = ({id,setEdit}) => {
     <div>
     <div className='div_main'>
     <div className='head'><h2>Edit Employee</h2></div>
-    <div className='div_form'>
+    <div className='div_form' style={{height:'800px'}}>
     <form onSubmit={handleSubmit}>
     <div className='form_head'>Employee Details</div>
     <div className='add_form'>
         <div class="form-outline">
+        <label>first Name </label>
         <input
             type="text"
             name="firstName"
@@ -50,6 +53,7 @@ const EditEmployee = ({id,setEdit}) => {
        
         <br />
         <div class="form-outline">
+          <label>Last Name </label>
         <input
           type="text"
           name="lastName"
@@ -60,9 +64,11 @@ const EditEmployee = ({id,setEdit}) => {
        
         <br />
         <div class="form-outline">
+        <label>Address </label><br/>
         <textarea
           type="text"
           name="address"
+          style={{width:'300px'}}
           value={data.address}    // inject state correspond to input and so on
           onChange={handleChange}
         />
@@ -70,6 +76,7 @@ const EditEmployee = ({id,setEdit}) => {
        
         <br />
         <div class="form-outline">
+        <label>Department</label>
         <input
           type="text"
           name="department"
@@ -80,6 +87,7 @@ const EditEmployee = ({id,setEdit}) => {
        
         <br />
         <div class="form-outline">
+        <label>Designation </label>
         <input
           type="text"
           name="designation"
@@ -90,6 +98,7 @@ const EditEmployee = ({id,setEdit}) => {
        
         <br />
         <div class="form-outline">
+        <label>Email </label>
         <input
           type="text"
           name="email"
@@ -100,6 +109,7 @@ const EditEmployee = ({id,setEdit}) => {
        
         <br />
         <div class="form-outline">
+        <label>Phone Number </label>
         <input
           type="text"
           name="phoneNumber"
@@ -110,9 +120,8 @@ const EditEmployee = ({id,setEdit}) => {
       
         <br />
     
-        <button type="submit">
-          Submit
-        </button>
+        
+        <Button style={{backgroundColor:'#010322'}}  type="submit" variant="contained">Submit</Button>
     </div>
         
       </form>

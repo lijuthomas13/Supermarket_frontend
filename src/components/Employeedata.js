@@ -17,6 +17,13 @@ if (searchItem === '' && option === '') {
 
 else if (
 
+  item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) && option=="") {
+
+  return item;
+
+}
+else if (
+
   item.firstName.toLowerCase().includes(searchItem.toLocaleLowerCase()) && option=="All Employees") {
 
   return item;

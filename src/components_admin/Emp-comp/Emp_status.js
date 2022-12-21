@@ -43,7 +43,7 @@ function Emp_status(props) {
   return (
     <div id='emp_parent'>
         <div id='emp_leftchild'>
-        <h1>{post.length}</h1>
+        <h2>{post.length}</h2>
         <p>Employees</p>
         </div>
         <div id='emp_rightchild'>

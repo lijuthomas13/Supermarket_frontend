@@ -103,10 +103,10 @@ const Employees = () => {
   const [data,setData]=useState([])
   const [show ,setShow]=useState(false)
   const [edit ,setEdit]=useState(false)
-  const [id ,setId]=useState("")
+  const [idd ,setId]=useState("")
   const [emp, setEmp] = useState([])
-    let {idd} =useParams()
-    const url2=`http://192.168.2.74/employee/${idd}`;
+    let {id} =useParams()
+    const url2=`http://192.168.2.74/employee/${id}`;
     console.log(id)
   
 
@@ -162,7 +162,7 @@ console.log(data )
             )}
            
             {edit && (
-                <EditEmployee setEdit={setEdit} id={id}/> 
+                <EditEmployee setEdit={setEdit} id={idd}/> 
             )}
       
       </div>

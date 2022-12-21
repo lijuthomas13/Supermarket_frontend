@@ -69,7 +69,7 @@ function Dashbord(props) {
   return (
     <div class='container'>
         <div class='row mt-3' >
-          <h1>Welcome,{props.data.firstName}!</h1>
+          <h1 id='name_header'>Welcome,{props.data.firstName}!</h1>
         </div>
         <div class='row mt-3'>
           <h3>Summary</h3>
@@ -77,7 +77,7 @@ function Dashbord(props) {
         <div class='row mt-3'>
           <div class='col-sm' id='firstrow'>
             <div class='card' id='row1-card1'>
-              <TotalEmp data={post} />
+              <TotalEmp  data={post} />
             </div>
           </div>
           <div class='col-sm'>

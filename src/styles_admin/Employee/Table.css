@@ -12,3 +12,12 @@
     padding-top: 10px;
     
 }
+@media only screen and (max-width: 1400px){
+    #table_comp{
+        width: 1000px;
+      margin-left: 60px;
+    }
+    #salary_header{
+        margin-left: 50px;
+    }
+}

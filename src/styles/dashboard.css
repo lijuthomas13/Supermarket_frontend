@@ -32,6 +32,9 @@
   
   
 }
+
+
+
 .summary-data{
     width:250px;
     height:120px;
@@ -50,6 +53,10 @@
 }
 .summary-data p{
     color:#8991c0;
+}
+.summary-data h3{
+    margin: 0;
+    padding: 0;
 }
 
 .chart{
@@ -83,3 +90,41 @@
 .datachart .details-one p{
     margin-bottom: 10px;
 }
+
+
+@media only screen and (max-width: 1500px) {
+    .datachart{
+        width: 450px;;
+        height:400px;
+
+    }
+    
+  }
+@media only screen and (max-width: 1400px) {
+    .datachart{
+        width: 450px;;
+        height:400px;
+
+    }
+    
+  }
+
+
+  @media only screen and (max-width: 1300px) {
+    .datachart{
+        width: 400px;;
+        height:400px;
+
+    }
+    
+  }
+
+  
+@media only screen and (max-width: 1000px) {
+    .datachart{
+        width: 300px;;
+        height:350px;
+
+    }
+    
+  }
