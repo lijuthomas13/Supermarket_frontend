@@ -6,7 +6,7 @@ import {useState} from 'react';
 import {storage} from './firebase';
 import 'firebase/storage';
 import {ref, uploadBytes,getDownloadURL} from 'firebase/storage';
-
+import AttachmentIcon from '@mui/icons-material/Attachment';
 import {  useFormik } from 'formik'
 import * as Yup from "yup";
 import { FaFileUpload } from 'react-icons/fa'
@@ -135,9 +135,9 @@ function AddEmployee({setShow , data , setData}) {
 
                     <div className='profile_pic'>
                         <div >
-                            {downurl ? <Avatar alt="Travis Howard" src={downurl} /> : <img src={icons} style={{ width: "80px" }} />}
+                            {downurl ? <Avatar style={{ width: "80px",height:'80px' }}  alt="Travis Howard" src={downurl} /> : <img src={icons} style={{ width: "80px",height:'80px' }}  />}
                         </div>
-                        <div ><h5>Profile</h5></div>
+                       
                         <div className='upload_option'>
                             <input type="file" name="file" id="file" class="myclass1" onChange={(event) => { setImageUpload(event.target.files[0]) }} value={formik.values.file} onBlur={formik.handleBlur}></input>
 
@@ -190,10 +190,16 @@ function AddEmployee({setShow , data , setData}) {
                                     {formik.touched.AadharDocument && formik.errors.AadharDocument ? <p className='error'>{formik.errors.AadharDocument}</p> : null}
                                 </div> */}
 
-                        <div>
-                            <input type='file' onChange={(event) => { setAadharUpload(event.target.files[0]) }}></input>
+                        <div >
+                            <label id='label_aadhar'>
+                                Select Aadhar File
+                                <AttachmentIcon/>
+                            <input type='file' style={{display:'none'}} onChange={(event) => { setAadharUpload(event.target.files[0]) }}></input>
+                            </label>
+                            <br/>
                             {/* <Button variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button> */}
-                            {Aadharupload ? <Button variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button> : null}
+                            {Aadharupload ? <Button style={{width:'300px',height:'35x'}} variant="contained" type='button' onClick={uploadAadhar}>upload adhar</Button> : null}
+                            
                         </div>
 
 

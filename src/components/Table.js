@@ -236,8 +236,11 @@ function Row(props) {
               
               
                 
-                {post.filter((item) => {
-                  
+              {(rowsPerPage > 0
+                  ? post.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  : post
+                ).filter((item) => {
+                    
                   if (searchItem === '' && option === 0) {
                     return item;
                   }
