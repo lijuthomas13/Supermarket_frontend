@@ -9,6 +9,11 @@
     height: 100%;
     width: 50%;
     background-color: #010322;
+    position: inherit;
+}
+#inside_div_image{
+    position: relative;
+    padding:60px;
 }
 .div_right{
     width: 50%;

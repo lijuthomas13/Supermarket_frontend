@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/login.css';
 import Button from '@mui/material/Button';
@@ -6,13 +6,20 @@ import LoginIcon from '@mui/icons-material/Login';
 import icon from '../Assets/icons.svg';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
+import cover_image from '../Assets/Cover_image.svg';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 function Login() {
+  const [wrongDetails,setWrongDetails]=useState(false)
   const location = useLocation();
   const navigate = useNavigate()
   const login_url="http://192.168.2.74/login";
+  function check_credentials(err){
+    if(err.response.status==401){
+      setWrongDetails(true)
+    }
+  }
   const formik = useFormik({
     initialValues: {
       user_name: "",
@@ -36,6 +43,8 @@ function Login() {
       // navigate("/employee")
       // axios.post(login_url,payload).then(res=>navigate('/employee',{state:{id:res.data}})).catch(err => console.log(err.response?.status))
       axios.post(login_url,payload).then(res=>{
+        
+        
         if(payload.userType===1){
           navigate(`/employeePage/${res.data}`,{state:{id:res.data}})
         }
@@ -47,18 +56,20 @@ function Login() {
           navigate(`/admin/${res.data}`,{state:{id:res.data}})
         }
     }
-      ).catch(err => console.log(err.response?.status))
+      ).catch(err => check_credentials(err))
     }
   })
   return (
     <div className='login_container'>
       <div className='div_left'>
-
+      <div id='inside_div_image'><img src={cover_image}></img></div>
+        
       </div>
       <div className='div_right'>
         <div className='div_login'>
           <div className='icon_login'>
-            <img style={{ width: "150px" }} src={icon} />
+            
+            <img id='cover_image' style={{ width: "150px" }} src={icon} />
           </div>
 
           <div className='input_div'>
@@ -82,6 +93,7 @@ function Login() {
                 </select>
                 {formik.touched.user_type&&formik.errors.user_type?<p className='error'>{formik.errors.user_type}</p>:null}
               </div>
+              {wrongDetails?<p style={{textAlign:'center',color:'red'}}>Invalid Credentials</p>:null}
               <div className="form-outline mb-4 ">
                 <Button id="login_btn" type="submit" variant="contained" endIcon={<LoginIcon />}>Login</Button>
               </div>
