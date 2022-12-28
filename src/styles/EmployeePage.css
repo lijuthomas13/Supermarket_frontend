@@ -98,28 +98,27 @@ h3{
     height:200px;
 
 }
-/* .head1{
+.head1{
     text-align: center;
     margin-top: 10px;
     width: 100%;
     height: 10px;
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
     left: 10px;
     color: 
     #616785;
     font-family: "Poppins";
-} */
+}
 .head2{
     text-align: center;
     margin-top: 10px;
     width: 100%;
     height: 10px;
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
     left: 10px;
-    color: 
-    #616785;
+    
     font-family: "Poppins";
 }
 h2{
@@ -130,7 +129,19 @@ h2{
     color: white;
     text-decoration: none;
 }
+.show_Otherdetails p,
 .details p{
     color: #616785;
+    font-size: 15px;
     
+}
+
+.show_details p,
+.emp_details p{
+    font-size: 15px;
+}
+
+.show_details ,
+.emp_details {
+    padding-top: 40px;
 }

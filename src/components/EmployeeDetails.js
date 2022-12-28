@@ -20,7 +20,7 @@ function EmployeeDetails({details}) {
     <div className='emp_container'>
       <div className='head1'>Employee Details
           <div className='icon2'>
-          <Avatar style={{width:'100px',height:'100px'}} alt="Travis Howard" src={details.profilePic} />
+          <Avatar style={{width:'100px',height:'100px',marginLeft:'85px'}} alt="Travis Howard" src={details.profilePic} />
           </div>
       </div>
       <div className='emp_details'>

@@ -61,7 +61,7 @@
 
 .chart{
     width:100%;
-    height:400px;
+    height:450px;
     display: flex;
     justify-content: space-between;
   
@@ -70,7 +70,7 @@
 }
 .datachart{
     width:520px;
-    height:400px;
+    height:450px;
     background-color:#fff;
     border-radius: 10px;
     margin-bottom:50px;
